@@ -1,0 +1,17 @@
+{% extends('base.html.twig') %}
+
+ {% block stylesheets %}
+     <link href="{{ asset('build/style.css') }}" rel="stylesheet" />
+ {% endblock %}
+
+{% block body %}
+    <h1>LIST OF FOUND THINGS</h1>
+
+    <div id="formstyle">
+        {{ form_start(ListAllThingsForm) }}
+        {{ form_widget(ListAllThingsForm) }}
+        {{ form_end(ListAllThingsForm) }}
+        {{ list(list) }}
+    </div>
+
+{%  endblock %}

@@ -1,0 +1,32 @@
+{% extends('base.html.twig') %}
+
+ {% block stylesheets %}
+     <link href="{{ asset('build/style.css') }}" rel="stylesheet" />
+ {% endblock %}
+
+{% block body %}
+    <h1>Fundamt Österreich</h1>
+    <h2>Ihr digitales Service</h2>
+
+    <div id="boxes">
+        <div>
+            <img id="icon" src="build/icons/suitcase.png" alt="suitcase"/>
+            <button class="pure-material-button-contained" type="button" onclick="location.href = 'lostPage'">Etwas Verloren?</button>
+        </div>
+
+        <div>
+            <img id="icon" src="{{ asset('build/icons/luppe.png') }}" alt="loup"/>
+            <button class="pure-material-button-contained" type="button" onclick="location.href = 'foundPage'">Etwas Gefunden?</button>
+        </div>
+
+        <div>
+            <img id="icon" src="{{ asset('build/icons/list.png') }}" alt="info"/>
+            <button style="width: 105px"class="pure-material-button-contained" type="button" onclick="location.href = 'listAllPage'">Gefundene Gegenstände</button>
+        </div>
+
+        <div>
+            <img id="icon" src="{{ asset('build/icons/info.png') }}" alt="info"/>
+            <button class="pure-material-button-contained" type="button" onclick="location.href = 'employeeInfo'">MitarbeiterInnenbereich</button>
+        </div>
+    </div>
+{%  endblock %}

@@ -1,0 +1,22 @@
+{% extends('base.html.twig') %}
+
+ {% block stylesheets %}
+     <link href="{{ asset('build/style.css') }}" rel="stylesheet" />
+ {% endblock %}
+
+{% block body %}
+    <h1>LOST THINGS</h1>
+
+    <div id="formstyle">
+        {{ form_start(LostPageForm) }}
+            {{ form_widget(LostPageForm) }}
+        {{ form_end(LostPageForm) }}
+    </div>
+
+    <div id="form-buttons">
+        <button type="submit" class="pure-material-button-contained">Upload a picture</button>
+        <button type="submit" class="pure-material-button-contained">Submit</button>
+    </div>
+
+
+{%  endblock %}
