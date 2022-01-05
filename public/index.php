@@ -1,6 +1,7 @@
 <?php
 
 use App\Kernel;
+use Backend\Nelmio\ApiDocBundle;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 

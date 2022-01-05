@@ -5,18 +5,12 @@
  {% endblock %}
 
 {% block body %}
-    <h1>LOST THINGS</h1>
+    <h1>Verlorene Gegenstände</h1>
 
     <div id="formstyle">
         {{ form_start(LostPageForm) }}
             {{ form_widget(LostPageForm) }}
+            <button style="margin-top: 20px" type="submit" class="pure-material-button-contained">Submit</button>
         {{ form_end(LostPageForm) }}
     </div>
-
-    <div id="form-buttons">
-        <button type="submit" class="pure-material-button-contained">Upload a picture</button>
-        <button type="submit" class="pure-material-button-contained">Submit</button>
-    </div>
-
-
 {%  endblock %}

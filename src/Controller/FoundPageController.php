@@ -3,6 +3,8 @@
 namespace App\Controller;
 use App\Entity\Findings;
 use App\Form\FoundPageForm;
+use App\Form\LostPageForm;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +19,30 @@ class FoundPageController extends  AbstractController
     /**
      * @Route("/", name="foundPage")
      */
-    public function foundPage()
+    public function foundPage(EntityManagerInterface $em, Request $request)
     {
         $form = $this->createForm(FoundPageForm::class);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $findings = new Findings();
+            $findings->setCategory($data['Kategorien']);
+            $findings->setDescription($data['Beschreibung']);
+            $findings->setLocation($data['Ort']);
+            $findings->setTime($data['Zeit']);
+            $findings->setName($data['Name']);
+            $findings->setAdress($data['Adresse']);
+            $findings->setPhoneNumber($data['Telefonnummer']);
+            $findings->setMailAdress($data['EmailAdresse']);
+            $findings->setCreatedAt(new \DateTimeImmutable('now', (new \DateTimeZone('Africa/Tunis'))));
+            $findings->setAdditionalInformation($data['sonstigeInformationen']);
+
+            $em->persist($findings);
+            $em->flush();
+
+            return $this->redirectToRoute('homePage');
+        }
 
         return $this->render('found.html.twig', [
             'FoundPageForm' => $form->createView(),

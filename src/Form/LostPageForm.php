@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use App\Entity\Category;
@@ -12,7 +13,7 @@ class LostPageForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', ChoiceType::class, [
+            ->add('Kategorien', ChoiceType::class, [
             'choices' => [
                 '' => 0,
                 'Ausweise, Dokumente, Plastikkarten' => 1,
@@ -26,15 +27,25 @@ class LostPageForm extends AbstractType
                 'Schmuck, Uhren, Wertsachen' => 9,
                 'Sonstiges' => 10
             ]])
-            ->add('description')
-            ->add('location')
-            ->add('time')
-            ->add('name')
-            ->add('addresses')
-            ->add('phoneNumber')
-            ->add('mailAddress')
-            ->add('createdAt')
-            ->add('optionalInformation');
+            ->add('Beschreibung')
+            ->add('Ort')
+            ->add('Zeit')
+            ->add('Name')
+            ->add('Adresse')
+            ->add('Telefonnummer')
+            ->add('EmailAdresse')
+            ->add('sonstigeInformationen')
+            ->add('FotoHochladen', FileType::class, ['mapped'=>false])
+//            ->add('Status', ChoiceType::class, [
+//                'choices' => [
+//                    '' => 0,
+//                    'abgeholt' => 1,
+//                    'zurückgegeben' => 2,
+//                    'entsorgt' => 3,
+//                    'vermisst' => 4,
+//                    'abgeschlossen' => 5
+//                ]])
 
+        ;
     }
 }

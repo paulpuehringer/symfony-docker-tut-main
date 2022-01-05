@@ -2,16 +2,56 @@
 
  {% block stylesheets %}
      <link href="{{ asset('build/style.css') }}" rel="stylesheet" />
+{#     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">#}
  {% endblock %}
 
 {% block body %}
-    <h1>LIST OF FOUND THINGS</h1>
+    <h1>Liste gefundener Gegenstände</h1>
 
-    <div id="formstyle">
-        {{ form_start(ListAllThingsForm) }}
-        {{ form_widget(ListAllThingsForm) }}
-        {{ form_end(ListAllThingsForm) }}
-        {{ list(list) }}
+    <div style="overflow-x:auto;">
+        <table id="tb_">
+            <tr>
+                <th>ID</th>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>
+                <th>Ort</th>
+                <th>Zeit</th>
+                <th>Name</th>
+                <th>Adresse</th>
+                <th>Tel. Nummer</th>
+                <th>Email</th>
+                <th>Erstellt am</th>
+                <th>weitere Infos</th>
+                <th>Löschen</th>
+                <th>Bearbeiten</th>
+            </tr>
+
+            <tbody>
+                {% for finding in findings %}
+                    <tr>
+                        <td>{{ finding.id }}</td>
+                        <td> {{ finding.category }}</td>
+                        <td>{{ finding.description }}</td>
+                        <td>{{ finding.location }}</td>
+                        <td>{{ finding.time }}</td>
+                        <td>{{ finding.name }}</td>
+                        <td>{{ finding.adress }}</td>
+                        <td>{{ finding.phoneNumber }}</td>
+                        <td>{{ finding.mailAdress }}</td>
+                        <td>{{ finding.getCreatedAt() }}</td>
+                        <td>{{ finding.additionalInformation }}</td>
+                        <td><a href="{{ path('finding.delete', {id: finding.id}) }}">
+                                <img  width="20px" height="20px" src="{{ asset('build/icons/bin.png') }}" alt="info"/>
+                            </a>
+                        </td>
+                        <td><a href="{{ path('finding.update', {id: finding.id}) }}">
+                                <img  width="20px" height="20px" src="{{ asset('build/icons/pencil.png') }}" alt="info"/>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 {%  endblock %}

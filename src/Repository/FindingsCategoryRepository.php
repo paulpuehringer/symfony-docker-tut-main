@@ -19,10 +19,9 @@ class FindingsCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, FindingsCategory::class);
     }
 
-    // /**
-    //  * @return FindingsCategory[] Returns an array of FindingsCategory objects
-    //  */
-    /*
+     /**
+      * @return FindingsCategory[] Returns an array of FindingsCategory objects
+      */
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('f')
@@ -34,9 +33,7 @@ class FindingsCategoryRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
 
-    /*
     public function findOneBySomeField($value): ?FindingsCategory
     {
         return $this->createQueryBuilder('f')
@@ -46,5 +43,5 @@ class FindingsCategoryRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

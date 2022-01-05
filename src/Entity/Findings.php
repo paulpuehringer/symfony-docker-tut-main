@@ -33,7 +33,7 @@ class Findings
     private $location;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $time;
 
@@ -61,6 +61,11 @@ class Findings
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -108,12 +113,12 @@ class Findings
         return $this;
     }
 
-    public function getTime(): ?\DateTimeInterface
+    public function getTime(): ?string
     {
         return $this->time;
     }
 
-    public function setTime(?\DateTimeInterface $time): self
+    public function setTime(?string $time): self
     {
         $this->time = $time;
 
@@ -168,9 +173,11 @@ class Findings
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?string
     {
-        return $this->createdAt;
+        $string_date = $this->createdAt->format('d/m/Y');
+
+        return $string_date;
     }
 
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
@@ -188,6 +195,18 @@ class Findings
     public function setAdditionalInformation(?string $additionalInformation): self
     {
         $this->additionalInformation = $additionalInformation;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
